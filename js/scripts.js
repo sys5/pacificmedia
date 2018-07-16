@@ -1,364 +1,143 @@
-jQuery(function ($) {
+/***************** Waypoints ******************/
 
-    'use strict';
+$(document).ready(function() {
 
+	$('.wp1').waypoint(function() {
+		$('.wp1').addClass('animated fadeInLeft');
+	}, {
+		offset: '75%'
+	});
+	$('.wp2').waypoint(function() {
+		$('.wp2').addClass('animated fadeInUp');
+	}, {
+		offset: '75%'
+	});
+	$('.wp3').waypoint(function() {
+		$('.wp3').addClass('animated fadeInDown');
+	}, {
+		offset: '55%'
+	});
+	$('.wp4').waypoint(function() {
+		$('.wp4').addClass('animated fadeInDown');
+	}, {
+		offset: '75%'
+	});
+	$('.wp5').waypoint(function() {
+		$('.wp5').addClass('animated fadeInUp');
+	}, {
+		offset: '75%'
+	});
+	$('.wp6').waypoint(function() {
+		$('.wp6').addClass('animated fadeInDown');
+	}, {
+		offset: '75%'
+	});
 
-    /* ---------------------------------------------- /*
-     * Preloader
-    /* ---------------------------------------------- */
+});
 
-    $(window).ready(function() {
-        $('#status').fadeOut();
-        $('#preloader').delay(200).fadeOut('slow');
-    });
+/***************** Slide-In Nav ******************/
 
-    
-    // -------------------------------------------------------------
-    // WOW JS
-    // -------------------------------------------------------------
+$(window).load(function() {
 
-    (function () {
-        new WOW().init();
-    }());
+	$('.nav_slide_button').click(function() {
+		$('.pull').slideToggle();
+	});
 
+});
 
-    
-    // -------------------------------------------------------------
-    // Related Project
-    // -------------------------------------------------------------
+/***************** Smooth Scrolling ******************/
 
-    (function () {
-          $(".related-work-carousel").owlCarousel({
-         
-              autoPlay: 5000, //Set AutoPlay to 5 seconds
-         
-              items : 3,
-              itemsDesktop : [1199,3],
-              itemsDesktopSmall : [979,3]
-         
-          });
-    }());
+$(function() {
 
+	$('a[href*=#]:not([href=#])').click(function() {
+		if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
 
-    //Our advantages wrapper tab
-    //changes section class for different backgrounds
+			var target = $(this.hash);
+			target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+			if (target.length) {
+				$('html,body').animate({
+					scrollTop: target.offset().top
+				}, 2000);
+				return false;
+			}
+		}
+	});
 
-    $('.css-tab').on('shown.bs.tab', function ( e ) {
-        $(e.target).closest( ".advantages-wrapper" )
-            .removeClass($(e.relatedTarget).text().toLowerCase())
-        .addClass($(e.target).text().toLowerCase());
-    });
+});
 
+/***************** Nav Transformicon ******************/
 
-    // -------------------------------------------------------------
-    // CSS Handover Work Carousel
-    // -------------------------------------------------------------
+document.querySelector("#nav-toggle").addEventListener("click", function() {
+	this.classList.toggle("active");
+});
 
-    //prevent bootstrap carousel to autorun
-    (function () {
-		$('#css-handover-carousel').carousel({
-			pause: true,
-			interval: false
-		});
-    }());
+/***************** Overlays ******************/
 
-
-    // -------------------------------------------------------------
-    // CSS Testimonial Carousel
-    // -------------------------------------------------------------
-
-    //prevent bootstrap carousel to autorun
-    (function () {
-        $('#css-testimonial-carousel').carousel({
-            pause: true,
-            interval: false
-        });
-    }());
-
-    // -------------------------------------------------------------
-    // CSS Testimonial Carousel
-    // -------------------------------------------------------------
-
-    //prevent bootstrap carousel to autorun
-    (function () {
-		$('#about-us-slider').carousel({
-			pause: true,
-			interval: false
-		});
-    }());
-
-
-    // -----------------------------------------------------------------
-    //jQuery for page scrolling feature - requires jQuery Easing plugin
-    // ------------------------------------------------------------------
-
-    (function () {
-	    $('a.page-scroll').on('click', function(event) {
-	        var $anchor = $(this);
-	        $('html, body').stop().animate({
-	            scrollTop: $($anchor.attr('href')).offset().top
-	        }, 1500, 'easeInOutExpo');
-	        event.preventDefault();
-	    });
-    }());
-
-
-
-    // -------------------------------------------------------------
-    // OffCanvas
-    // -------------------------------------------------------------
-
-    (function () {
-        $('button.navbar-toggle').HippoOffCanvasMenu({
-
-        documentWrapper: '#st-container',
-        contentWrapper : '.st-content',
-        position       : 'hippo-offcanvas-left',    // class name
-        // opener         : 'st-menu-open',            // class name
-        effect         : 'slide-in-on-top',             // class name
-        closeButton    : '#off-canvas-close-btn',
-        menuWrapper    : '.offcanvas-menu',                 // class name below-pusher
-        documentPusher : '.st-pusher'
-
-        });
-    }());
-
-    
-    // -------------------------------------------------------------
-    // Chart
-    // -------------------------------------------------------------
-
-    (function () {
-
-        $('.chart').easyPieChart({
-            //your configuration goes here
-            easing: 'easeOut',
-            delay: 3000,
-            barColor: '#fff',
-            trackColor: 'rgba(51, 51, 51, 0.5)',
-            scaleColor: false,
-            lineWidth: 10,
-            size: 150,
-            animate: 5000,
-            onStep: function(from, to, percent) {
-                this.el.children[0].innerHTML = Math.round(percent);
+$(document).ready(function(){
+    if (Modernizr.touch) {
+        // show the close overlay button
+        $(".close-overlay").removeClass("hidden");
+        // handle the adding of hover class when clicked
+        $(".img").click(function(e){
+            if (!$(this).hasClass("hover")) {
+                $(this).addClass("hover");
             }
         });
-
-    }());
-
-
-
-    // -------------------------------------------------------------
-    // Shuffle
-    // -------------------------------------------------------------
-
-    (function () {
-    
-        /* initialize shuffle plugin */
-        var $grid = $('#grid');
-
-        $grid.shuffle({
-            itemSelector: '.portfolio-item' // the selector for the items in the grid
-        });
-
-        /* reshuffle when user clicks a filter item */
-        $('#filter a').click(function (e) {
+        // handle the closing of the overlay
+        $(".close-overlay").click(function(e){
             e.preventDefault();
-
-            // set active class
-            $('#filter a').removeClass('active');
-            $(this).addClass('active');
-
-            // get group name from clicked item
-            var groupName = $(this).attr('data-group');
-
-            // reshuffle grid
-            $grid.shuffle('shuffle', groupName );
-        });
-    
-    }());
-
-
-
-    // -------------------------------------------------------------
-    // Magnific Portfolio Popup
-    // -------------------------------------------------------------
-
-    (function () {
-        $('.image-link').magnificPopup({
-
-        gallery: {
-          enabled: true
-        },
-        removalDelay: 300, // Delay in milliseconds before popup is removed
-        mainClass: 'mfp-with-zoom', // this class is for CSS animation below
-        type:'image'
-
-        });
-    }());
-
-
-
-
-    // -----------------------------------------------------------------
-    // jQuery to collapse the navbar on scroll
-    // ------------------------------------------------------------------
-
-    $(window).scroll(function() {
-        if ($(".navbar").offset().top > 50) {
-            $(".navbar-fixed-top").addClass("top-nav-collapse");
-        } else {
-            $(".navbar-fixed-top").removeClass("top-nav-collapse");
-        }
-    });
-
-
-
-
-
-    // ------------------------------------------------------------------
-    // jQuery for back to Top
-    // ------------------------------------------------------------------
-
-    (function(){
-
-          $('body').append('<div id="toTop" class="btn btn-primary"><i class="fa fa-chevron-up"></i></div>');
-
-            $(window).scroll(function () {
-                if ($(this).scrollTop() != 0) {
-                    $('#toTop').fadeIn();
-                } else {
-                    $('#toTop').fadeOut();
-                }
-            }); 
-
-        $('#toTop').on('click',function(){
-            $("html, body").animate({ scrollTop: 0 }, 600);
-            return false;
-        });
-
-    }());
-
-
-
-
-
-    // ----------------------------------------------------------------
-    //  Dropdown menu
-    // ----------------------------------------------------------------
-
-
-    (function () {
-
-      
-        function getIEVersion() {
-            var match = navigator.userAgent.match(/(?:MSIE |Trident\/.*; rv:)(\d+)/);
-            return match ? parseInt(match[1]) : false;
-        }
-
-
-        if( getIEVersion() ){
-            $('html').addClass('ie'+getIEVersion());
-        }
-       
-
-        if( $('html').hasClass('ie9') || $('html').hasClass('ie10')  ){
-
-            $('.submenu-wrapper').each(function(){
-
-               $(this).addClass('no-pointer-events');
-
-            });
-
-        }
-
-
-        var timer;
-
-        $('li.dropdown').on('mouseenter', function (event) {
-
-
-            event.stopImmediatePropagation();
-            event.stopPropagation();
-
-            $(this).removeClass('open menu-animating').addClass('menu-animating');
-            var that = this;
-
-
-            if (timer) {
-                clearTimeout(timer);
-                timer = null;
+            e.stopPropagation();
+            if ($(this).closest(".img").hasClass("hover")) {
+                $(this).closest(".img").removeClass("hover");
             }
-
-
-            timer = setTimeout(function () {
-
-                $(that).removeClass('menu-animating');
-                $(that).addClass('open');
-
-            }, 300);   // 300ms as animation end time
-
-
         });
-
-        // on mouse leave
-
-        $('li.dropdown').on('mouseleave', function (event) {
-
-            var that = this;
-
-            $(this).removeClass('open menu-animating').addClass('menu-animating');
-
-
-            if (timer) {
-                clearTimeout(timer);
-                timer = null;
-            }
-
-            timer = setTimeout(function () {
-
-                $(that).removeClass('menu-animating');
-                $(that).removeClass('open');
-
-            }, 300);  // 300ms as animation end time
-
+    } else {
+        // handle the mouseenter functionality
+        $(".img").mouseenter(function(){
+            $(this).addClass("hover");
+        })
+        // handle the mouseleave functionality
+        .mouseleave(function(){
+            $(this).removeClass("hover");
         });
+    }
+});
 
-    }());
+/***************** Flexsliders ******************/
 
-    // ----------------------------------------------------------------
-    //  Contact Form Ajax
-    // ----------------------------------------------------------------
+$(window).load(function() {
 
-    (function () {
+	$('#portfolioSlider').flexslider({
+		animation: "slide",
+		directionNav: false,
+		controlNav: true,
+		touch: false,
+		pauseOnHover: true,
+		start: function() {
+			$.waypoints('refresh');
+		}
+	});
 
-            $('#contactForm').on('submit',function(e){
+	$('#servicesSlider').flexslider({
+		animation: "slide",
+		directionNav: false,
+		controlNav: true,
+		touch: true,
+		pauseOnHover: true,
+		start: function() {
+			$.waypoints('refresh');
+		}
+	});
 
-                e.preventDefault();
+	$('#teamSlider').flexslider({
+		animation: "slide",
+		directionNav: false,
+		controlNav: true,
+		touch: true,
+		pauseOnHover: true,
+		start: function() {
+			$.waypoints('refresh');
+		}
+	});
 
-                var $action = $(this).prop('action');
-                var $data = $(this).serialize();
-                var $this = $(this);
-
-                $this.prevAll('.alert').remove();
-
-                $.post( $action, $data, function( data ) {
-
-                    if( data.response=='error' ){
-
-                        $this.before( '<div class="alert  alert-warning">'+data.message+'</div>' );
-                    }
-
-                    if( data.response=='success' ){
-
-                        $this.before( '<div class="alert alert-success">'+data.message+'</div>' );
-                        $this.find('input, textarea').val('');
-                    }
-
-                }, "json");
-
-            });
-        }());
-
-}); // JQuery end
+});
