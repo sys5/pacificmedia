@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>퍼시픽미디어 - 디지털콘텐츠 B2B 공급회사</title>
+    <title>Halcyon Days - An Exclusive Freebie for Codrops</title>
     <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -48,13 +48,13 @@
               </div>
               <div class="row">
                 <div class="col-md-8 col-md-offset-2 text-center inner">
-                  <h1 class="animated fadeInDown">퍼시픽<span>미디어</span></h1>
-                  <p class="animated fadeInUp delay-05s">전자책 등 <em>디지털콘텐츠</em> B2B 공급회사</p>
+                  <h1 class="animated fadeInDown">HALCYON<span>DAYS</span></h1>
+                  <p class="animated fadeInUp delay-05s">An exclusive HTML5/CSS3 freebie for <em>Codrops</em></p>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center">
-                  <a href="tel:+821030617730" class="learn-more-btn">지금 바로 전화</a>
+                  <a href="http://tympanus.net/codrops/?p=19439" class="learn-more-btn">Back to the article</a>
                 </div>
               </div>
             </div>
@@ -64,8 +64,8 @@
           <div class="container">
             <div class="row">
               <div class="col-md-8 col-md-offset-2 wp1">
-                <h1 class="arrow">전자책을 비롯한 디지털콘텐츠</h1>
-                <p>퍼시픽미디어는 전자책을 비롯한 디지털콘텐츠를 기관에게 판매합니다. Sed a lorem quis neque interdum <a href="#">consequat ut sed sem</a>. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent id tempor ipsum. Fusce at massa ac nunc porta fringilla sed eget neque. Quisque quis pretium nulla. Fusce eget bibendum neque, vel volutpat augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+                <h1 class="arrow">A Creative Portfolio Template</h1>
+                <p>Sed a lorem quis neque interdum <a href="#">consequat ut sed sem</a>. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent id tempor ipsum. Fusce at massa ac nunc porta fringilla sed eget neque. Quisque quis pretium nulla. Fusce eget bibendum neque, vel volutpat augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
               </div>
             </div>
           </div>
